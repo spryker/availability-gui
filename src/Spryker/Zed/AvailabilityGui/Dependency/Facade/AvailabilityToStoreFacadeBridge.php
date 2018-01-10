@@ -47,4 +47,14 @@ class AvailabilityToStoreFacadeBridge implements AvailabilityToStoreFacadeInterf
         return $this->storeFacade->getStoreById($idStore);
     }
 
+    /**
+     * @param string $storeName
+     *
+     * @return \Generated\Shared\Transfer\StoreTransfer
+     */
+    public function getStoreByName($storeName)
+    {
+        return $this->storeFacade->getStoreByName($storeName);
+    }
+
 }
