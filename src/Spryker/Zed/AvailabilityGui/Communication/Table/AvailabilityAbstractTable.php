@@ -258,7 +258,7 @@ class AvailabilityAbstractTable extends AbstractTable
     protected function getAvailabilityLabel(SpyProductAbstract $productAbstractEntity, bool $isNeverOutOfStock): string
     {
         if ((new Decimal($productAbstractEntity->getVirtualColumn(AvailabilityHelperInterface::AVAILABILITY_QUANTITY) ?? 0))->greaterThan(0) || $isNeverOutOfStock) {
-            return $this->generateLabel(static::AVAILABLE, 'label-info');
+            return $this->generateLabel(static::AVAILABLE, 'label-success');
         }
 
         return $this->generateLabel(static::NOT_AVAILABLE, '');
