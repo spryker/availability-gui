@@ -105,9 +105,6 @@ class AvailabilityGuiCommunicationFactory extends AbstractCommunicationFactory
         );
     }
 
-    /**
-     * @return \Spryker\Zed\AvailabilityGui\Communication\Helper\AvailabilityHelperInterface
-     */
     public function createProductAvailabilityHelper(): AvailabilityHelperInterface
     {
         return new AvailabilityHelper(
@@ -198,9 +195,6 @@ class AvailabilityGuiCommunicationFactory extends AbstractCommunicationFactory
         return $this->getProvidedDependency(AvailabilityGuiDependencyProvider::PLUGINS_AVAILABILITY_VIEW_ACTION_VIEW_DATA_EXPANDER);
     }
 
-    /**
-     * @return \Spryker\Zed\AvailabilityGui\Dependency\Service\AvailabilityGuiToAvailabilityServiceInterface
-     */
     public function getAvailabilityService(): AvailabilityGuiToAvailabilityServiceInterface
     {
         return $this->getProvidedDependency(AvailabilityGuiDependencyProvider::SERVICE_AVAILABILITY);

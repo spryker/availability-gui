@@ -74,10 +74,5 @@ interface AvailabilityGuiToAvailabilityQueryContainerInterface
         array $stockNames = []
     ): SpyProductAbstractQuery;
 
-    /**
-     * @param int $idStore
-     *
-     * @return \Orm\Zed\Availability\Persistence\SpyAvailabilityAbstractQuery
-     */
     public function queryAvailabilityAbstractByIdStore(int $idStore): SpyAvailabilityAbstractQuery;
 }

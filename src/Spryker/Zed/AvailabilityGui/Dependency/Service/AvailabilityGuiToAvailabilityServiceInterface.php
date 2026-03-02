@@ -9,10 +9,5 @@ namespace Spryker\Zed\AvailabilityGui\Dependency\Service;
 
 interface AvailabilityGuiToAvailabilityServiceInterface
 {
-    /**
-     * @param string $productConcretesNeverOutOfStockSet
-     *
-     * @return bool
-     */
     public function isAbstractProductNeverOutOfStock(string $productConcretesNeverOutOfStockSet): bool;
 }

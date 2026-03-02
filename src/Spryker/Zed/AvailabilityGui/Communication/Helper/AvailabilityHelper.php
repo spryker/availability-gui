@@ -53,14 +53,6 @@ class AvailabilityHelper implements AvailabilityHelperInterface
      */
     protected $availabilityService;
 
-    /**
-     * @param \Spryker\Zed\AvailabilityGui\Dependency\QueryContainer\AvailabilityGuiToAvailabilityQueryContainerInterface $availabilityQueryContainer
-     * @param \Spryker\Zed\AvailabilityGui\Dependency\QueryContainer\AvailabilityGuiToProductBundleQueryContainerInterface $productBundleQueryContainer
-     * @param \Spryker\Zed\AvailabilityGui\Dependency\Facade\AvailabilityToStoreFacadeInterface $storeFacade
-     * @param \Spryker\Zed\AvailabilityGui\Dependency\Facade\AvailabilityGuiToStockInterface $stockFacade
-     * @param \Spryker\Zed\AvailabilityGui\Dependency\Facade\AvailabilityGuiToOmsFacadeInterface $omsFacade
-     * @param \Spryker\Zed\AvailabilityGui\Dependency\Service\AvailabilityGuiToAvailabilityServiceInterface $availabilityService
-     */
     public function __construct(
         AvailabilityGuiToAvailabilityQueryContainerInterface $availabilityQueryContainer,
         AvailabilityGuiToProductBundleQueryContainerInterface $productBundleQueryContainer,
@@ -77,13 +69,6 @@ class AvailabilityHelper implements AvailabilityHelperInterface
         $this->availabilityService = $availabilityService;
     }
 
-    /**
-     * @param int $idProductAbstract
-     * @param int $idLocale
-     * @param int $idStore
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer|null
-     */
     public function findProductAbstractAvailabilityTransfer(int $idProductAbstract, int $idLocale, int $idStore): ?ProductAbstractAvailabilityTransfer
     {
         $storeTransfer = $this->storeFacade->getStoreById($idStore);
@@ -122,11 +107,6 @@ class AvailabilityHelper implements AvailabilityHelperInterface
             ->setReservationQuantity($this->calculateReservation($reservationQuantity, $storeTransfer)->trim());
     }
 
-    /**
-     * @param string|null $neverOutOfStockSet
-     *
-     * @return bool
-     */
     public function isNeverOutOfStock(?string $neverOutOfStockSet): bool
     {
         if ($neverOutOfStockSet === null) {
@@ -136,12 +116,6 @@ class AvailabilityHelper implements AvailabilityHelperInterface
         return $this->availabilityService->isAbstractProductNeverOutOfStock($neverOutOfStockSet);
     }
 
-    /**
-     * @param string $reservationAggregationSet
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     public function calculateReservation(string $reservationAggregationSet, StoreTransfer $storeTransfer): Decimal
     {
         $reservation = new Decimal(0);
@@ -164,13 +138,6 @@ class AvailabilityHelper implements AvailabilityHelperInterface
         return $reservation;
     }
 
-    /**
-     * @param string $concreteSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param \Spryker\DecimalObject\Decimal $currentStoreReservationQuantity
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     public function sumReservationsFromOtherStores(string $concreteSku, StoreTransfer $storeTransfer, Decimal $currentStoreReservationQuantity): Decimal
     {
         return $currentStoreReservationQuantity->add(
@@ -178,11 +145,6 @@ class AvailabilityHelper implements AvailabilityHelperInterface
         );
     }
 
-    /**
-     * @param int $idProduct
-     *
-     * @return bool
-     */
     public function isBundleProduct(int $idProduct): bool
     {
         return $this->productBundleQueryContainer->queryBundleProduct($idProduct)->exists();
@@ -203,12 +165,6 @@ class AvailabilityHelper implements AvailabilityHelperInterface
         );
     }
 
-    /**
-     * @param int $idLocale
-     * @param int $idStore
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
-     */
     public function queryAvailabilityAbstractWithCurrentStockAndReservedProductsAggregated(
         int $idLocale,
         int $idStore
@@ -268,11 +224,6 @@ class AvailabilityHelper implements AvailabilityHelperInterface
         );
     }
 
-    /**
-     * @param int $idStore
-     *
-     * @return \Orm\Zed\Availability\Persistence\SpyAvailabilityAbstractQuery
-     */
     public function queryAvailabilityAbstractByIdStore(int $idStore): SpyAvailabilityAbstractQuery
     {
         return $this->availabilityQueryContainer->queryAvailabilityAbstractByIdStore($idStore);

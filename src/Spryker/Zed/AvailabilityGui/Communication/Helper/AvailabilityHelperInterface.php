@@ -78,44 +78,14 @@ interface AvailabilityHelperInterface
      */
     public const ID_PRODUCT = 'idProduct';
 
-    /**
-     * @param int $idProductAbstract
-     * @param int $idLocale
-     * @param int $idStore
-     *
-     * @return \Generated\Shared\Transfer\ProductAbstractAvailabilityTransfer|null
-     */
     public function findProductAbstractAvailabilityTransfer(int $idProductAbstract, int $idLocale, int $idStore): ?ProductAbstractAvailabilityTransfer;
 
-    /**
-     * @param string $neverOutOfStockSet
-     *
-     * @return bool
-     */
     public function isNeverOutOfStock(string $neverOutOfStockSet): bool;
 
-    /**
-     * @param string $reservationAggregationSet
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     public function calculateReservation(string $reservationAggregationSet, StoreTransfer $storeTransfer): Decimal;
 
-    /**
-     * @param string $concreteSku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     * @param \Spryker\DecimalObject\Decimal $currentStoreReservationQuantity
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     public function sumReservationsFromOtherStores(string $concreteSku, StoreTransfer $storeTransfer, Decimal $currentStoreReservationQuantity): Decimal;
 
-    /**
-     * @param int $idProduct
-     *
-     * @return bool
-     */
     public function isBundleProduct(int $idProduct): bool;
 
     /**
@@ -126,12 +96,6 @@ interface AvailabilityHelperInterface
      */
     public function queryAvailabilityAbstractWithStockByIdLocale(int $idLocale, int $idStore);
 
-    /**
-     * @param int $idLocale
-     * @param int $idStore
-     *
-     * @return \Orm\Zed\Product\Persistence\SpyProductAbstractQuery
-     */
     public function queryAvailabilityAbstractWithCurrentStockAndReservedProductsAggregated(int $idLocale, int $idStore): SpyProductAbstractQuery;
 
     /**
@@ -152,10 +116,5 @@ interface AvailabilityHelperInterface
      */
     public function getProductAbstractEntitiesWithStockByProductAbstractIds(array $productAbstractIds, int $idLocale, int $idStore): array;
 
-    /**
-     * @param int $idStore
-     *
-     * @return \Orm\Zed\Availability\Persistence\SpyAvailabilityAbstractQuery
-     */
     public function queryAvailabilityAbstractByIdStore(int $idStore): SpyAvailabilityAbstractQuery;
 }

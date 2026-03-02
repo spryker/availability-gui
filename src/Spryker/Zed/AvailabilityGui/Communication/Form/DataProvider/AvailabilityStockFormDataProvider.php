@@ -36,11 +36,6 @@ class AvailabilityStockFormDataProvider
      */
     protected $storeTransfer;
 
-    /**
-     * @param \Spryker\Zed\AvailabilityGui\Dependency\Facade\AvailabilityGuiToStockInterface $stockFacade
-     * @param \Spryker\Zed\AvailabilityGui\Dependency\Facade\AvailabilityGuiToLocaleInterface $localeFacade
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     */
     public function __construct(
         AvailabilityGuiToStockInterface $stockFacade,
         AvailabilityGuiToLocaleInterface $localeFacade,
@@ -100,11 +95,6 @@ class AvailabilityStockFormDataProvider
         return $availabilityGuiStockTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AvailabilityStockTransfer $availabilityStockTransfer
-     *
-     * @return \Generated\Shared\Transfer\AvailabilityStockTransfer
-     */
     protected function addEmptyStockType(AvailabilityStockTransfer $availabilityStockTransfer): AvailabilityStockTransfer
     {
         $allStockType = $this->stockFacade->getStockTypesForStore($this->storeTransfer);
@@ -124,11 +114,6 @@ class AvailabilityStockFormDataProvider
         return $availabilityStockTransfer;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\AvailabilityStockTransfer $availabilityStockTransfer
-     *
-     * @return \Generated\Shared\Transfer\AvailabilityStockTransfer
-     */
     protected function trimStockQuantities(AvailabilityStockTransfer $availabilityStockTransfer): AvailabilityStockTransfer
     {
         foreach ($availabilityStockTransfer->getStocks() as $stockProductTransfer) {

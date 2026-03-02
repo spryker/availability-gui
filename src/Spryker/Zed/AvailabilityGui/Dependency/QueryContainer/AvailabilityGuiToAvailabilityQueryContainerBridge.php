@@ -105,11 +105,6 @@ class AvailabilityGuiToAvailabilityQueryContainerBridge implements AvailabilityG
         );
     }
 
-    /**
-     * @param int $idStore
-     *
-     * @return \Orm\Zed\Availability\Persistence\SpyAvailabilityAbstractQuery
-     */
     public function queryAvailabilityAbstractByIdStore(int $idStore): SpyAvailabilityAbstractQuery
     {
         return $this->availabilityQueryContainer->queryAvailabilityAbstractByIdStore($idStore);

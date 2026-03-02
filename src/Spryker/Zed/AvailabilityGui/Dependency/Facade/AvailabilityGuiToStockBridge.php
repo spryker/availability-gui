@@ -25,21 +25,11 @@ class AvailabilityGuiToStockBridge implements AvailabilityGuiToStockInterface
         $this->stockFacade = $stockFacade;
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockProductTransfer $transferStockProduct
-     *
-     * @return int
-     */
     public function createStockProduct(StockProductTransfer $transferStockProduct): int
     {
         return $this->stockFacade->createStockProduct($transferStockProduct);
     }
 
-    /**
-     * @param \Generated\Shared\Transfer\StockProductTransfer $stockProductTransfer
-     *
-     * @return int
-     */
     public function updateStockProduct(StockProductTransfer $stockProductTransfer): int
     {
         return $this->stockFacade->updateStockProduct($stockProductTransfer);

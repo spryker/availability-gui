@@ -22,11 +22,6 @@ class AvailabilityGuiToAvailabilityServiceBridge implements AvailabilityGuiToAva
         $this->availabilityService = $availabilityService;
     }
 
-    /**
-     * @param string $productConcretesNeverOutOfStockSet
-     *
-     * @return bool
-     */
     public function isAbstractProductNeverOutOfStock(string $productConcretesNeverOutOfStockSet): bool
     {
         return $this->availabilityService->isAbstractProductNeverOutOfStock($productConcretesNeverOutOfStockSet);

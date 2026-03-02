@@ -83,13 +83,6 @@ class AvailabilityAbstractTable extends AbstractTable
      */
     protected $availabilityGuiRepository;
 
-    /**
-     * @param \Spryker\Zed\AvailabilityGui\Communication\Helper\AvailabilityHelperInterface $availabilityHelper
-     * @param \Spryker\Zed\AvailabilityGui\Dependency\Facade\AvailabilityToStoreFacadeInterface $storeFacade
-     * @param int $idStore
-     * @param int $idLocale
-     * @param \Spryker\Zed\AvailabilityGui\Persistence\AvailabilityGuiRepositoryInterface $availabilityGuiRepository
-     */
     public function __construct(
         AvailabilityHelperInterface $availabilityHelper,
         AvailabilityToStoreFacadeInterface $storeFacade,
@@ -216,11 +209,6 @@ class AvailabilityAbstractTable extends AbstractTable
         return $productAbstractIds;
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     *
-     * @return bool
-     */
     protected function isNeverOutOfStock(SpyProductAbstract $productAbstractEntity): bool
     {
         $neverOutOfStockSet = '';
@@ -249,12 +237,6 @@ class AvailabilityAbstractTable extends AbstractTable
         return $pageEditLink;
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     * @param bool $isNeverOutOfStock
-     *
-     * @return string
-     */
     protected function getAvailabilityLabel(SpyProductAbstract $productAbstractEntity, bool $isNeverOutOfStock): string
     {
         if ((new Decimal($productAbstractEntity->getVirtualColumn(AvailabilityHelperInterface::AVAILABILITY_QUANTITY) ?? 0))->greaterThan(0) || $isNeverOutOfStock) {
@@ -264,11 +246,6 @@ class AvailabilityAbstractTable extends AbstractTable
         return $this->generateLabel(static::NOT_AVAILABLE, '');
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     protected function getStockQuantity(SpyProductAbstract $productAbstractEntity): Decimal
     {
         return (new Decimal($productAbstractEntity->getVirtualColumn(AvailabilityHelperInterface::STOCK_QUANTITY) ?? 0));
@@ -308,11 +285,6 @@ class AvailabilityAbstractTable extends AbstractTable
         return false;
     }
 
-    /**
-     * @param \Orm\Zed\Product\Persistence\SpyProductAbstract $productAbstractEntity
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     protected function calculateReservation(SpyProductAbstract $productAbstractEntity): Decimal
     {
         $reservationQuantity = '';
@@ -327,9 +299,6 @@ class AvailabilityAbstractTable extends AbstractTable
         );
     }
 
-    /**
-     * @return void
-     */
     protected function expandPropelQuery(): void
     {
         $this->queryProductAbstractAvailability = $this->availabilityGuiRepository->expandQuery($this->queryProductAbstractAvailability);

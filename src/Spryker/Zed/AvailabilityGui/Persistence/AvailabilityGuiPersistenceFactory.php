@@ -18,9 +18,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
  */
 class AvailabilityGuiPersistenceFactory extends AbstractPersistenceFactory
 {
-    /**
-     * @return \Spryker\Zed\AvailabilityGui\Persistence\Expander\ProductAbstractAvailabilityQueryExpanderInterface
-     */
     public function createProductAbstractAvailabilityQueryExpander(): ProductAbstractAvailabilityQueryExpanderInterface
     {
         return new ProductAbstractAvailabilityQueryExpander(

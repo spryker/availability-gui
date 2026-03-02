@@ -12,11 +12,5 @@ use Spryker\DecimalObject\Decimal;
 
 interface AvailabilityGuiToOmsFacadeInterface
 {
-    /**
-     * @param string $sku
-     * @param \Generated\Shared\Transfer\StoreTransfer $storeTransfer
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     public function getReservationsFromOtherStores(string $sku, StoreTransfer $storeTransfer): Decimal;
 }

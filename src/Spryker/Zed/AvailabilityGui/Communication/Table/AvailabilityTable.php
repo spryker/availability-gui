@@ -89,13 +89,6 @@ class AvailabilityTable extends AbstractTable
      */
     protected $storeFacade;
 
-    /**
-     * @param \Spryker\Zed\AvailabilityGui\Communication\Helper\AvailabilityHelperInterface $availabilityHelper
-     * @param \Spryker\Zed\AvailabilityGui\Dependency\Facade\AvailabilityToStoreFacadeInterface $storeFacade
-     * @param int $idProductAbstract
-     * @param int $idLocale
-     * @param int $idStore
-     */
     public function __construct(
         AvailabilityHelperInterface $availabilityHelper,
         AvailabilityToStoreFacadeInterface $storeFacade,
@@ -203,11 +196,6 @@ class AvailabilityTable extends AbstractTable
         return $result;
     }
 
-    /**
-     * @param array $productItem
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     protected function calculateReservation(array $productItem): Decimal
     {
         $quantity = new Decimal($productItem[AvailabilityHelperInterface::RESERVATION_QUANTITY] ?? 0);

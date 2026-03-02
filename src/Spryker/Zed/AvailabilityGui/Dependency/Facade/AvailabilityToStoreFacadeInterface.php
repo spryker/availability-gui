@@ -16,9 +16,6 @@ interface AvailabilityToStoreFacadeInterface
      */
     public function getAllStores(): array;
 
-    /**
-     * @return \Generated\Shared\Transfer\StoreTransfer
-     */
     public function getCurrentStore(): StoreTransfer;
 
     /**

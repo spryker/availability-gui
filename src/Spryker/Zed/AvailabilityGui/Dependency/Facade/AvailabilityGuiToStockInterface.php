@@ -12,18 +12,8 @@ use Generated\Shared\Transfer\StoreTransfer;
 
 interface AvailabilityGuiToStockInterface
 {
-    /**
-     * @param \Generated\Shared\Transfer\StockProductTransfer $transferStockProduct
-     *
-     * @return int
-     */
     public function createStockProduct(StockProductTransfer $transferStockProduct): int;
 
-    /**
-     * @param \Generated\Shared\Transfer\StockProductTransfer $stockProductTransfer
-     *
-     * @return int
-     */
     public function updateStockProduct(StockProductTransfer $stockProductTransfer): int;
 
     /**

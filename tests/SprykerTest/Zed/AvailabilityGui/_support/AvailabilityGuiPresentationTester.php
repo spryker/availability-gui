@@ -27,9 +27,6 @@ class AvailabilityGuiPresentationTester extends Actor
 {
     use _generated\AvailabilityGuiPresentationTesterActions;
 
-    /**
-     * @return void
-     */
     public function assertTableWithDataExists(): void
     {
         // Wait until the data tables data is retrieved and the table is rendered.
@@ -45,9 +42,6 @@ class AvailabilityGuiPresentationTester extends Actor
         $this->assertGreaterThan(0, $itemListItems);
     }
 
-    /**
-     * @return void
-     */
     public function clickViewButton(): void
     {
         $this->click('//*[@class="dataTables_scrollBody"]/table/tbody/tr/td[8]/a');

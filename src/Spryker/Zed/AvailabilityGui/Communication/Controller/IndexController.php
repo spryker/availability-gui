@@ -278,12 +278,6 @@ class IndexController extends AbstractController
         return $stockProductTransfer->getIdStockProduct() === null && (!$stockProductTransfer->getQuantity()->isZero()) || $stockProductTransfer->getIsNeverOutOfStock();
     }
 
-    /**
-     * @param \Symfony\Component\HttpFoundation\Request $request
-     * @param \Generated\Shared\Transfer\StoreTransfer $fallbackStoreTransfer
-     *
-     * @return int
-     */
     protected function extractStoreId(Request $request, StoreTransfer $fallbackStoreTransfer): int
     {
         $idStore = $request->query->getInt(static::URL_PARAM_ID_STORE);
@@ -294,11 +288,6 @@ class IndexController extends AbstractController
         return $this->castId($idStore);
     }
 
-    /**
-     * @param array $viewData
-     *
-     * @return array
-     */
     protected function executeAvailabilityListActionViewDataExpanderPlugins(array $viewData): array
     {
         foreach ($this->getFactory()->getAvailabilityListActionViewDataExpanderPlugins() as $availabilityListActionViewDataExpanderPlugin) {
@@ -308,11 +297,6 @@ class IndexController extends AbstractController
         return $viewData;
     }
 
-    /**
-     * @param array $viewData
-     *
-     * @return array
-     */
     protected function executeAvailabilityViewActionViewDataExpanderPlugins(array $viewData): array
     {
         foreach ($this->getFactory()->getAvailabilityViewActionViewDataExpanderPlugins() as $availabilityViewActionViewDataExpanderPlugin) {

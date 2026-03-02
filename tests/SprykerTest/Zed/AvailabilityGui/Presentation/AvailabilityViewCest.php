@@ -22,22 +22,12 @@ use SprykerTest\Zed\AvailabilityGui\PageObject\AvailabilityPage;
  */
 class AvailabilityViewCest
 {
-    /**
-     * @param \SprykerTest\Zed\AvailabilityGui\AvailabilityGuiPresentationTester $i
-     *
-     * @return void
-     */
     public function _before(AvailabilityGuiPresentationTester $i): void
     {
         $i->amZed();
         $i->amLoggedInUser();
     }
 
-    /**
-     * @param \SprykerTest\Zed\AvailabilityGui\AvailabilityGuiPresentationTester $i
-     *
-     * @return void
-     */
     public function testDisplayViewPage(AvailabilityGuiPresentationTester $i): void
     {
         $i->wantTo('View selected availability item');

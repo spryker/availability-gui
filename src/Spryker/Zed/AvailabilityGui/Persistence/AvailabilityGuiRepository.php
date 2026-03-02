@@ -15,11 +15,6 @@ use Spryker\Zed\Kernel\Persistence\AbstractRepository;
  */
 class AvailabilityGuiRepository extends AbstractRepository implements AvailabilityGuiRepositoryInterface
 {
-    /**
-     * @param \Propel\Runtime\ActiveQuery\ModelCriteria $query
-     *
-     * @return \Propel\Runtime\ActiveQuery\ModelCriteria
-     */
     public function expandQuery(ModelCriteria $query): ModelCriteria
     {
         return $this->getFactory()

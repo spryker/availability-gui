@@ -27,9 +27,6 @@ class AvailabilityGuiCommunicationTester extends Actor
 {
     use _generated\AvailabilityGuiCommunicationTesterActions;
 
-    /**
-     * @return void
-     */
     public function assertTableWithDataExists(): void
     {
         $showingEntries = $this->grabTextFrom('//*[@class="dataTables_info"]');

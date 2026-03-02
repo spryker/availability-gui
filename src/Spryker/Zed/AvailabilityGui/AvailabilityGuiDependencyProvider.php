@@ -82,11 +82,6 @@ class AvailabilityGuiDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function provideCommunicationLayerDependencies(Container $container): Container
     {
         $container = $this->addFacadeLocale($container);
@@ -102,11 +97,6 @@ class AvailabilityGuiDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     public function providePersistenceLayerDependencies(Container $container): Container
     {
         $container = parent::providePersistenceLayerDependencies($container);
@@ -199,11 +189,6 @@ class AvailabilityGuiDependencyProvider extends AbstractBundleDependencyProvider
         return $container;
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addAvailabilityListActionViewDataExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_AVAILABILITY_LIST_ACTION_VIEW_DATA_EXPANDER, function () {
@@ -221,11 +206,6 @@ class AvailabilityGuiDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addAvailabilityViewActionViewDataExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_AVAILABILITY_VIEW_ACTION_VIEW_DATA_EXPANDER, function () {
@@ -243,11 +223,6 @@ class AvailabilityGuiDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addAvailabilityAbstractTableQueryCriteriaExpanderPlugins(Container $container): Container
     {
         $container->set(static::PLUGINS_AVAILABILITY_ABSTRACT_TABLE_QUERY_CRITERIA_EXPANDER, function () {
@@ -265,11 +240,6 @@ class AvailabilityGuiDependencyProvider extends AbstractBundleDependencyProvider
         return [];
     }
 
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
     protected function addAvailabilityService(Container $container): Container
     {
         $container->set(static::SERVICE_AVAILABILITY, function (Container $container) {

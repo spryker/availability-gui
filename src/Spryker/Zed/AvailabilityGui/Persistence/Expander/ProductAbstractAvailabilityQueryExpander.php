@@ -26,11 +26,6 @@ class ProductAbstractAvailabilityQueryExpander implements ProductAbstractAvailab
         $this->availabilityAbstractTableQueryCriteriaExpanderPlugins = $availabilityAbstractTableQueryCriteriaExpanderPlugins;
     }
 
-    /**
-     * @param \Propel\Runtime\ActiveQuery\ModelCriteria $query
-     *
-     * @return \Propel\Runtime\ActiveQuery\ModelCriteria
-     */
     public function expandQuery(ModelCriteria $query): ModelCriteria
     {
         $this->addJoin($query, $this->buildQueryCriteriaTransfer());
@@ -38,9 +33,6 @@ class ProductAbstractAvailabilityQueryExpander implements ProductAbstractAvailab
         return $query;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\QueryCriteriaTransfer
-     */
     protected function buildQueryCriteriaTransfer(): QueryCriteriaTransfer
     {
         $queryCriteriaTransfer = new QueryCriteriaTransfer();
@@ -52,12 +44,6 @@ class ProductAbstractAvailabilityQueryExpander implements ProductAbstractAvailab
         return $queryCriteriaTransfer;
     }
 
-    /**
-     * @param \Propel\Runtime\ActiveQuery\ModelCriteria $query
-     * @param \Generated\Shared\Transfer\QueryCriteriaTransfer $queryCriteriaTransfer
-     *
-     * @return \Propel\Runtime\ActiveQuery\ModelCriteria
-     */
     protected function addJoin(
         ModelCriteria $query,
         QueryCriteriaTransfer $queryCriteriaTransfer

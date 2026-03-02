@@ -97,15 +97,6 @@ class BundledProductAvailabilityTable extends AbstractTable
      */
     protected $storeFacade;
 
-    /**
-     * @param \Spryker\Zed\AvailabilityGui\Communication\Helper\AvailabilityHelperInterface $availabilityHelper
-     * @param \Spryker\Zed\AvailabilityGui\Dependency\QueryContainer\AvailabilityGuiToProductBundleQueryContainerInterface $productBundleQueryContainer
-     * @param \Spryker\Zed\AvailabilityGui\Dependency\Facade\AvailabilityToStoreFacadeInterface $storeFacade
-     * @param int $idLocale
-     * @param int $idStore
-     * @param int $idProductBundle
-     * @param int $idBundleProductAbstract
-     */
     public function __construct(
         AvailabilityHelperInterface $availabilityHelper,
         AvailabilityGuiToProductBundleQueryContainerInterface $productBundleQueryContainer,
@@ -240,11 +231,6 @@ class BundledProductAvailabilityTable extends AbstractTable
         return $result;
     }
 
-    /**
-     * @param array $productItem
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     protected function calculateReservation(array $productItem): Decimal
     {
         $reservationQuantity = new Decimal($productItem[AvailabilityHelperInterface::RESERVATION_QUANTITY] ?? 0);
@@ -256,21 +242,11 @@ class BundledProductAvailabilityTable extends AbstractTable
         );
     }
 
-    /**
-     * @param array $productItem
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     protected function getStockQuantity(array $productItem): Decimal
     {
         return (new Decimal($productItem[AvailabilityHelperInterface::STOCK_QUANTITY] ?? 0));
     }
 
-    /**
-     * @param array $productItem
-     *
-     * @return \Spryker\DecimalObject\Decimal
-     */
     protected function getConcreteAvailability(array $productItem): Decimal
     {
         return (new Decimal($productItem[AvailabilityQueryContainer::CONCRETE_AVAILABILITY] ?? 0));

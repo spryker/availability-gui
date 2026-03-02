@@ -24,17 +24,11 @@ class AvailabilityGuiToLocaleBridge implements AvailabilityGuiToLocaleInterface
         $this->localeFacade = $localeFacade;
     }
 
-    /**
-     * @return \Generated\Shared\Transfer\LocaleTransfer
-     */
     public function getCurrentLocale(): LocaleTransfer
     {
         return $this->localeFacade->getCurrentLocale();
     }
 
-    /**
-     * @return string
-     */
     public function getCurrentLocaleName(): string
     {
         return $this->localeFacade->getCurrentLocaleName();

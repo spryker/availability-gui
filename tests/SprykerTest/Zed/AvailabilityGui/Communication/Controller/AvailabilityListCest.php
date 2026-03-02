@@ -23,11 +23,6 @@ use SprykerTest\Zed\AvailabilityGui\PageObject\AvailabilityPage;
  */
 class AvailabilityListCest
 {
-    /**
-     * @param \SprykerTest\Zed\AvailabilityGui\AvailabilityGuiCommunicationTester $i
-     *
-     * @return void
-     */
     public function testDisplayListPage(AvailabilityGuiCommunicationTester $i): void
     {
         $i->wantTo('Open availability list');

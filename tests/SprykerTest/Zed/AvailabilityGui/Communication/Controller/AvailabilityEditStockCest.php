@@ -61,9 +61,6 @@ class AvailabilityEditStockCest
         $i->see(AvailabilityPage::PAGE_AVAILABILITY_VIEW_HEADER);
     }
 
-    /**
-     * @return array
-     */
     protected function stockProvider(): array
     {
         return [
