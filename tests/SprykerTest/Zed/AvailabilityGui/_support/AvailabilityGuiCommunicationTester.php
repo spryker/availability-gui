@@ -29,11 +29,11 @@ class AvailabilityGuiCommunicationTester extends Actor
 
     public function assertTableWithDataExists(): void
     {
-        $showingEntries = $this->grabTextFrom('//*[@class="dataTables_info"]');
+        $showingEntries = $this->grabTextFrom('//*[@class="dt-info"]');
         preg_match('/^Showing\s{1}\d+\s{1}to\s{1}(\d+)/', $showingEntries, $matches);
         $this->assertGreaterThan(0, (int)$matches[1]);
 
-        $td = $this->grabTextFrom('//*[@class="dataTables_scrollBody"]/table/tbody');
+        $td = $this->grabTextFrom('//*[contains(@class, "dataTable")]/tbody');
         $itemListItems = count(explode("\n", $td));
 
         $this->assertGreaterThan(0, $itemListItems);

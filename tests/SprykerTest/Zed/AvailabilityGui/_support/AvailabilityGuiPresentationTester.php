@@ -31,12 +31,12 @@ class AvailabilityGuiPresentationTester extends Actor
     {
         // Wait until the data tables data is retrieved and the table is rendered.
         $this->waitForText('Showing');
-        $showingEntries = $this->grabTextFrom('//*[@class="dataTables_info"]');
+        $showingEntries = $this->grabTextFrom('//*[@class="dt-info"]');
 
         preg_match('/^Showing\s{1}\d+\s{1}to\s{1}(\d+)/', $showingEntries, $matches);
         $this->assertGreaterThan(0, (int)$matches[1]);
 
-        $td = $this->grabTextFrom('//*[@class="dataTables_scrollBody"]/table/tbody');
+        $td = $this->grabTextFrom('//*[contains(@class, "dataTable")]/tbody');
         $itemListItems = count(explode("\n", $td));
 
         $this->assertGreaterThan(0, $itemListItems);
@@ -44,6 +44,6 @@ class AvailabilityGuiPresentationTester extends Actor
 
     public function clickViewButton(): void
     {
-        $this->click('//*[@class="dataTables_scrollBody"]/table/tbody/tr/td[8]/a');
+        $this->click('//*[contains(@class, "dataTable")]/tbody/tr/td[8]/a');
     }
 }

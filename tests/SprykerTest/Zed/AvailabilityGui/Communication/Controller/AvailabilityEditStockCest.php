@@ -57,7 +57,7 @@ class AvailabilityEditStockCest
         $i->click('Save');
         $i->seeResponseCodeIs($example['expectedResponseCode']);
 
-        $i->click('//*[@id="page-wrapper"]/div[2]/div[2]/div/a');
+        $i->click('//*[@id="wrapper"]//*[@data-qa="title-action"]/a[1]');
         $i->see(AvailabilityPage::PAGE_AVAILABILITY_VIEW_HEADER);
     }
 
