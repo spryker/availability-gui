@@ -48,6 +48,11 @@ class StockSubForm extends AbstractType
     /**
      * @var string
      */
+    public const OPTION_WAREHOUSE_TO_STORE_MAPPING = 'warehouse_to_store_mapping';
+
+    /**
+     * @var string
+     */
     protected const DECIMAL_QUANTITY_VALIDATION_PATTERN = '/^\d{1,10}(\.\d{1,20})?$/';
 
     /**
@@ -69,6 +74,7 @@ class StockSubForm extends AbstractType
 
         $resolver->setDefaults([
             static::OPTION_LOCALE => null,
+            static::OPTION_WAREHOUSE_TO_STORE_MAPPING => null,
         ]);
     }
 
@@ -141,9 +147,11 @@ class StockSubForm extends AbstractType
         /** @var \Generated\Shared\Transfer\StockProductTransfer $stockProductTransfer */
         $stockProductTransfer = $form->getViewData();
 
-        $mapping = $this->getFactory()->getStockFacade()->getWarehouseToStoreMapping();
-        if (isset($mapping[$stockProductTransfer->getStockType()])) {
-            $view->vars['available_in_stores'] = $mapping[$stockProductTransfer->getStockType()];
+        $warehouseToStoreMapping = $options[static::OPTION_WAREHOUSE_TO_STORE_MAPPING]
+            ?? $this->getFactory()->getStockFacade()->getWarehouseToStoreMapping();
+
+        if (isset($warehouseToStoreMapping[$stockProductTransfer->getStockType()])) {
+            $view->vars['available_in_stores'] = $warehouseToStoreMapping[$stockProductTransfer->getStockType()];
         }
     }
 

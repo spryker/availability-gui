@@ -63,6 +63,9 @@ class AvailabilityStockForm extends AbstractType
             'entry_options' => [
                 'locale' => $options[static::OPTION_LOCALE],
                 'data_class' => StockProductTransfer::class,
+                StockSubForm::OPTION_WAREHOUSE_TO_STORE_MAPPING => $this->getFactory()
+                    ->getStockFacade()
+                    ->getWarehouseToStoreMapping(),
             ],
         ]);
 
