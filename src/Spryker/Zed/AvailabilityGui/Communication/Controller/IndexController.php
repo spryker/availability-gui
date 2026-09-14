@@ -169,7 +169,7 @@ class IndexController extends AbstractController
      */
     public function bundledProductAvailabilityTableAction(Request $request)
     {
-        $idBundleProduct = $request->query->getInt(BundledProductAvailabilityTable::URL_PARAM_ID_PRODUCT_BUNDLE);
+        $idBundleProduct = (int)$request->query->get(BundledProductAvailabilityTable::URL_PARAM_ID_PRODUCT_BUNDLE, 0);
         $idStore = $this->castId($request->query->getInt(BundledProductAvailabilityTable::URL_PARAM_ID_STORE));
 
         if (!$idBundleProduct) {
@@ -280,7 +280,7 @@ class IndexController extends AbstractController
 
     protected function extractStoreId(Request $request, StoreTransfer $fallbackStoreTransfer): int
     {
-        $idStore = $request->query->getInt(static::URL_PARAM_ID_STORE);
+        $idStore = (int)$request->query->get(static::URL_PARAM_ID_STORE, 0);
         if (!$idStore) {
             $idStore = $fallbackStoreTransfer->getIdStoreOrFail();
         }
