@@ -5,28 +5,28 @@
 
 'use strict';
 
+var tableAccess = require('ZedGuiModules/libs/table/table-access');
+
 $(document).ready(function () {
-    var bundledProductElement = $('#table-bundled-products');
-    var bundledProductTable = bundledProductElement.DataTable({
-        scrollX: 'auto',
-        autoWidth: false,
-        destroy: true,
-    });
+    const bundledProducts = document.querySelector('#bundled-products');
+    const bundledProductsTable = document.querySelector('#table-bundled-products');
+    const availabilityTable = $('#availability-table');
 
-    var availabilityTable = $('#availability-table').DataTable({
-        destroy: true,
-        scrollX: 'auto',
-        autoWidth: false,
-        fnInitComplete: function (oSettings, json) {
-            $('#availability-table .btn-view').each(function (index, element) {
-                $(element).on('click', function (event) {
-                    $('#bundled-products').show();
-                    event.preventDefault();
+    if (!bundledProducts || !bundledProductsTable || !availabilityTable.length) {
+        return;
+    }
 
-                    var tableDataUrl = $(element).prop('href');
-                    bundledProductTable.ajax.url(tableDataUrl).load();
-                });
+    availabilityTable.on('click', '.btn-view', function (event) {
+        event.preventDefault();
+
+        const url = $(this).prop('href');
+
+        bundledProducts.style.display = '';
+
+        tableAccess.requestTable(bundledProductsTable, function (handle) {
+            handle.reload(url).then(function () {
+                handle.refreshLayout();
             });
-        },
+        });
     });
 });
