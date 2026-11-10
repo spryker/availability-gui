@@ -232,7 +232,7 @@ class AvailabilityAbstractTable extends AbstractTable
             'id-product-abstract' => $idProductAbstract,
         ])->build();
 
-        $pageEditLink = '<a target="_blank" href="' . $pageEditUrl . '">' . $sku . '</a>';
+        $pageEditLink = '<a target="_blank" href="' . $pageEditUrl . '">' . htmlspecialchars((string)$sku, ENT_QUOTES, 'UTF-8') . '</a>';
 
         return $pageEditLink;
     }
